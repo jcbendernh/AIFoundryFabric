@@ -10,19 +10,21 @@ This repository provides sample Python scripts for working with Microsoft Fabric
 
 ## Prerequisites
 
-- Python 3.8+
+- Python 3.8+ installed on your system
+- [Azure CLI](https://learn.microsoft.com/en-us/cli/azure/?view=azure-cli-latest) installed on your system.
+- An Azure AI Foundry Project created.  <BR>For more information check out [Create a project for Azure AI Foundry](https://learn.microsoft.com/en-us/azure/ai-foundry/how-to/create-projects?tabs=ai-foundry&pivots=fdp-project).
+- A Microsoft Fabric Connected Resource created in the AI Foundry Project.  <BR>For more information check out [Use the Microsoft Fabric data agent | Setup](https://learn.microsoft.com/en-us/azure/ai-foundry/agents/how-to/tools/fabric?pivots=portal#setup)
 - Install required packages:
   ```sh
   pip install azure-identity
   pip install --pre azure-ai-projects
   ```
-- Access to an Azure AI Foundry project and a Microsoft Fabric connection.
 
 ## Usage
 
 ### 1. Create an Agent
 
-Edit `src/create_fabric_agent.py` to set your environment variables or replace the placeholder values for:
+Edit [`create_fabric_agent.py`](src/create_fabric_agent.py) to set your environment variables or replace the placeholder values for:
 - `PROJECT_ENDPOINT`
 - `MODEL_DEPLOYMENT_NAME`
 - `FABRIC_CONNECTION_ID`
@@ -41,13 +43,15 @@ Navigate to your agent in the Azure AI Foundry portal and add these resources be
 
 ### 2. Test the Agent
 
-Edit `src/test_fabric_agent.py` and set the `AGENT_ID` variable to the ID of the agent you created.
+Edit [`test_fabric_agent.py`](src/test_fabric_agent.py) and set the `AGENT_ID` variable to the ID of the agent created in the previous step.
 
 Run the script:
 ```sh
 python src/test_fabric_agent.py
 ```
 You can now interact with the agent in a conversational loop. Type your questions and receive responses from the agent. Type `exit` or `quit` to end the session.
+
+NOTE: Because we added the Code Interpreter, you can visualize the data in graphs when using the **Agents playground** in the AI Foundry Portal.  Try the following phrase "Show me this as a bar graph" after you have asked a data query like "What is the revenue per country?"
 
 ## License
 
